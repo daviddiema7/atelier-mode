@@ -2,30 +2,29 @@
 
 import { useRef } from "react";
 import { motion } from "framer-motion";
-import { Scissors, Instagram, Mail, ArrowRight, MapPin, Phone, ChevronLeft, ChevronRight } from "lucide-react";
-import Link from "next/link"; // Pour faire le lien vers la page collections
+import { Scissors, ArrowRight, Phone, ChevronLeft, ChevronRight, ShoppingBag } from "lucide-react";
+import Link from "next/link";
 
 export default function Home() {
-  const whatsappNumber = "33600000000"; // REMPLACE PAR LE VRAI NUMÉRO
-  const whatsappLink = `https://wa.me/${whatsappNumber}`;
-  
-  // Cette référence nous permet de contrôler le carrousel
+  // 👇 METS LE VRAI NUMÉRO ICI
+  const whatsappNumber = "33600000000"; 
+  const baseWhatsappLink = `https://wa.me/${whatsappNumber}`;
+
   const scrollRef = useRef<HTMLDivElement>(null);
 
-  // Fonctions pour cliquer sur les boutons gauche/droite
   const scroll = (direction: 'left' | 'right') => {
     if (scrollRef.current) {
       const { current } = scrollRef;
-      const scrollAmount = direction === 'left' ? -400 : 400; // Distance de défilement
+      const scrollAmount = direction === 'left' ? -350 : 350;
       current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
     }
   };
 
-  const creations = Array.from({ length: 8 }).map((_, i) => ({
+  const creations = Array.from({ length: 15 }).map((_, i) => ({
     id: i + 1,
-    title: i % 2 === 0 ? "Robe Wax & Soie" : "Ensemble Bazin Riche",
+    title: i % 2 === 0 ? `Robe Wax Modèle N°${i+1}` : `Ensemble Bazin N°${i+1}`,
     category: i % 3 === 0 ? "Pièce Unique" : "Sur Mesure",
-    image: i % 3 === 0 ? "/images/creation1.jpg" : i % 3 === 1 ? "/images/creation2.jpg" : "/images/creation3.jpg"
+    image: `/images/creation${i + 1}.jpg` 
   }));
 
   return (
@@ -41,7 +40,7 @@ export default function Home() {
              <span className="w-8 h-[1px] bg-ochre"></span> Par Charly
           </span>
         </div>
-        <a href={whatsappLink} target="_blank" className="hidden md:flex items-center gap-2 border border-sand px-6 py-2 rounded-full text-xs font-bold tracking-widest uppercase hover:bg-[#25D366] hover:text-white hover:border-[#25D366] transition duration-300">
+        <a href={baseWhatsappLink} target="_blank" className="hidden md:flex items-center gap-2 border border-sand px-6 py-2 rounded-full text-xs font-bold tracking-widest uppercase hover:bg-[#25D366] hover:text-white hover:border-[#25D366] transition duration-300">
           <Phone size={14} /> WhatsApp
         </a>
       </nav>
@@ -72,18 +71,16 @@ export default function Home() {
         </motion.div>
       </section>
 
-      {/* --- CARROUSEL AVEC BOUTONS --- */}
+      {/* --- CARROUSEL --- */}
       <section className="bg-cream py-20 border-t border-sand/30">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           
-          {/* En-tête du Carrousel avec les Boutons de Navigation */}
           <div className="flex flex-col md:flex-row justify-between items-end mb-8 gap-4">
             <div>
               <h2 className="text-3xl md:text-4xl font-serif text-charcoal mb-2">Aperçu Collection</h2>
-              <p className="text-charcoal/60 text-sm">Quelques pièces favorites de l'atelier.</p>
+              <p className="text-charcoal/60 text-sm">Coup de cœur ? Commandez directement.</p>
             </div>
 
-            {/* LES BOUTONS DE NAVIGATION */}
             <div className="flex gap-2">
               <button onClick={() => scroll('left')} className="w-12 h-12 rounded-full border border-sand flex items-center justify-center text-charcoal hover:bg-ochre hover:text-white hover:border-ochre transition duration-300">
                 <ChevronLeft size={24} />
@@ -94,7 +91,6 @@ export default function Home() {
             </div>
           </div>
           
-          {/* LE CARROUSEL (Barre cachée grâce à scrollbar-hide) */}
           <div 
             ref={scrollRef}
             className="flex overflow-x-auto gap-6 pb-12 snap-x snap-mandatory scrollbar-hide scroll-smooth"
@@ -102,19 +98,29 @@ export default function Home() {
             {creations.map((item) => (
               <motion.div 
                 key={item.id}
-                className="snap-center shrink-0 w-[280px] md:w-[350px] group cursor-pointer"
+                className="snap-center shrink-0 w-[280px] md:w-[350px] group relative"
               >
-                <div className="h-[400px] md:h-[500px] overflow-hidden relative mb-4 bg-sand">
-                  <img src={item.image} alt={item.title} className="w-full h-full object-cover transition duration-700 group-hover:scale-110" />
+                <div className="h-[400px] md:h-[500px] overflow-hidden relative mb-4 bg-sand shadow-sm rounded-sm">
+                  <img src={item.image} alt={item.title} className="w-full h-full object-cover transition duration-700 group-hover:scale-105" />
+                  
+                  {/* --- NOUVEAU BOUTON COMMANDER CLAIR --- */}
+                  <a 
+                    href={`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(`Bonjour Charly, je souhaite commander ce modèle : "${item.title}"`)}`}
+                    target="_blank"
+                    className="absolute bottom-4 right-4 bg-white/95 backdrop-blur-sm text-charcoal pl-4 pr-5 py-3 rounded-full flex items-center gap-2 shadow-xl hover:bg-[#25D366] hover:text-white transition duration-300 z-10 translate-y-2 group-hover:translate-y-0"
+                  >
+                    <ShoppingBag size={18} />
+                    <span className="text-xs font-bold uppercase tracking-widest">Commander</span>
+                  </a>
                 </div>
-                <div className="border-l-2 border-ochre pl-4">
+
+                <div className="border-l-2 border-ochre pl-4 pr-4">
                   <h3 className="text-lg font-serif text-charcoal">{item.title}</h3>
                   <p className="text-charcoal/50 text-xs uppercase tracking-wider mt-1">{item.category}</p>
                 </div>
               </motion.div>
             ))}
 
-            {/* Carte finale "Voir tout" */}
             <div className="snap-center shrink-0 w-[200px] h-[400px] md:h-[500px] flex items-center justify-center">
                <Link href="/collections" className="group text-center">
                   <div className="w-16 h-16 rounded-full border-2 border-terracotta text-terracotta flex items-center justify-center mx-auto mb-4 group-hover:bg-terracotta group-hover:text-white transition">
@@ -139,7 +145,7 @@ export default function Home() {
           </div>
           <div className="flex flex-col items-center md:items-start gap-4">
             <h4 className="text-white font-bold uppercase tracking-widest text-xs">Contact</h4>
-            <a href={whatsappLink} className="hover:text-[#25D366] transition flex items-center gap-2 text-lg">
+            <a href={baseWhatsappLink} className="hover:text-[#25D366] transition flex items-center gap-2 text-lg">
               <Phone size={20}/> <span className="underline decoration-1 underline-offset-4">Discuter sur WhatsApp</span>
             </a>
           </div>
