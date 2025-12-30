@@ -4,12 +4,12 @@
   --font-serif: var(--font-playfair), serif;
   --font-sans: var(--font-lato), sans-serif;
   
-  --color-cream: #FDFBF7;
-  --color-terracotta: #A75D43;
-  --color-terracotta-dark: #8A4A32;
-  --color-sage: #8A9A85;
-  --color-charcoal: #2C2A28;
-  --color-sand: #E8E6E1;
+  --color-cream: #F9F7F2;      /* Fond très légèrement plus chaud (Ivoire) */
+  --color-terracotta: #8D4E39; /* Argile Rouge plus profonde */
+  --color-terracotta-dark: #6B3A29;
+  --color-ochre: #D4AF37;      /* Touche Or/Moutarde pour le côté précieux */
+  --color-charcoal: #2A2624;   /* Noir ébène doux */
+  --color-sand: #EBE5D9;       /* Sable */
 }
 
 body {
@@ -17,8 +17,7 @@ body {
   color: var(--color-charcoal);
 }
 
-/* --- LA SOLUTION EST ICI --- */
-/* On crée une classe manuelle qui force l'utilisation de la variable */
+/* Ta classe pour la signature */
 .signature-force {
-  font-family: var(--font-custom) !important; /* Le !important force l'application */
+  font-family: var(--font-custom) !important;
 }
