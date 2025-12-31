@@ -69,11 +69,18 @@ export default function Collections() {
                   className="w-full h-full object-cover transition duration-700 group-hover:scale-105"
                 />
                 
-                {/* --- BOUTON COMMANDER (Exactement comme l'accueil) --- */}
+                {/* --- BOUTON COMMANDER (CORRIGÉ MOBILE) --- */}
                 <a 
                   href={`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(`Bonjour Charly, je souhaite commander ce modèle vu dans la collection : "${item.title}"`)}`}
                   target="_blank"
-                  className="absolute bottom-5 right-5 bg-white/95 backdrop-blur-sm text-charcoal pl-5 pr-6 py-3 rounded-full flex items-center gap-2 shadow-xl hover:bg-[#25D366] hover:text-white transition duration-300 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100"
+                  // 👇 ICI LES CHANGEMENTS :
+                  // opacity-100 translate-y-0 -> Visible par défaut (Mobile)
+                  // md:opacity-0 md:translate-y-4 -> Caché sur Ordi
+                  // md:group-hover:... -> Apparaît au survol sur Ordi
+                  className="absolute bottom-5 right-5 bg-white/95 backdrop-blur-sm text-charcoal pl-5 pr-6 py-3 rounded-full flex items-center gap-2 shadow-xl hover:bg-[#25D366] hover:text-white transition duration-300 
+                  opacity-100 translate-y-0 
+                  md:opacity-0 md:translate-y-4 
+                  md:group-hover:translate-y-0 md:group-hover:opacity-100"
                 >
                   <ShoppingBag size={18} />
                   <span className="text-xs font-bold uppercase tracking-widest">Commander</span>

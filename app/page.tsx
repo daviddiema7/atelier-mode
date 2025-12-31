@@ -135,6 +135,54 @@ export default function Home() {
 
         </div>
       </section>
+      {/* --- SECTION PROCESSUS (Comment ça marche) --- */}
+      <section className="bg-sand/30 py-20 border-t border-ochre/20">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl font-serif text-charcoal mb-4">Votre tenue, étape par étape</h2>
+            <p className="text-charcoal/60">Commander du sur-mesure n'a jamais été aussi simple.</p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8 relative">
+            {/* Ligne de connexion (visible seulement sur ordi) */}
+            <div className="hidden md:block absolute top-12 left-[16%] right-[16%] h-[2px] bg-ochre/30 -z-10"></div>
+
+            {/* Étape 1 */}
+            <div className="flex flex-col items-center text-center group">
+              <div className="w-24 h-24 bg-white rounded-full flex items-center justify-center border-2 border-ochre mb-6 shadow-lg group-hover:scale-110 transition duration-300">
+                <span className="font-serif text-3xl text-terracotta">1</span>
+              </div>
+              <h3 className="text-xl font-bold text-charcoal mb-2">Choisissez & Contactez</h3>
+              <p className="text-sm text-charcoal/70 max-w-xs leading-relaxed">
+                Repérez un modèle ou envoyez votre propre inspiration via WhatsApp. Nous discutons de vos envies.
+              </p>
+            </div>
+
+            {/* Étape 2 */}
+            <div className="flex flex-col items-center text-center group">
+              <div className="w-24 h-24 bg-white rounded-full flex items-center justify-center border-2 border-ochre mb-6 shadow-lg group-hover:scale-110 transition duration-300 delay-100">
+                <span className="font-serif text-3xl text-terracotta">2</span>
+              </div>
+              <h3 className="text-xl font-bold text-charcoal mb-2">Mesures & Confection</h3>
+              <p className="text-sm text-charcoal/70 max-w-xs leading-relaxed">
+                Je prends vos mesures (à l'atelier ou à distance) et je réalise votre pièce unique avec soin.
+              </p>
+            </div>
+
+            {/* Étape 3 */}
+            <div className="flex flex-col items-center text-center group">
+              <div className="w-24 h-24 bg-white rounded-full flex items-center justify-center border-2 border-ochre mb-6 shadow-lg group-hover:scale-110 transition duration-300 delay-200">
+                <span className="font-serif text-3xl text-terracotta">3</span>
+              </div>
+              <h3 className="text-xl font-bold text-charcoal mb-2">Essayage & Livraison</h3>
+              <p className="text-sm text-charcoal/70 max-w-xs leading-relaxed">
+                Venez essayer votre tenue pour les retouches finales. Elle est prête à être portée !
+              </p>
+            </div>
+
+          </div>
+        </div>
+      </section>
       
       {/* FOOTER */}
       <footer className="bg-charcoal text-sand py-16 border-t-4 border-ochre">
@@ -154,6 +202,7 @@ export default function Home() {
           </div>
         </div>
       </footer>
+      
     </main>
   );
 }

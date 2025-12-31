@@ -16,8 +16,11 @@ const customFont = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Fudkas Couture",
-  description: "Atelier de couture par Charly.",
+  title: "Fudkas Couture | Créations Afro-Chic & Sur Mesure",
+  description: "L'atelier de Charly. Robes en Wax, Bazin et tenues modernes sur mesure. Confection artisanale à Paris/Banlieue. Commandez votre pièce unique.",
+  icons: {
+    icon: '/icon.svg', // Assure-toi que l'icône est bien liée
+  },
 };
 
 export default function RootLayout({
