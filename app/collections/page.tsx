@@ -70,21 +70,21 @@ export default function Collections() {
                 />
                 
                 {/* --- BOUTON COMMANDER (CORRIGÉ MOBILE) --- */}
-                <a 
+                <motion.a 
+                  whileTap={{ scale: 0.9 }}
                   href={`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(`Bonjour Charly, je souhaite commander ce modèle vu dans la collection : "${item.title}"`)}`}
                   target="_blank"
-                  // 👇 ICI LES CHANGEMENTS :
-                  // opacity-100 translate-y-0 -> Visible par défaut (Mobile)
-                  // md:opacity-0 md:translate-y-4 -> Caché sur Ordi
-                  // md:group-hover:... -> Apparaît au survol sur Ordi
-                  className="absolute bottom-5 right-5 bg-white/95 backdrop-blur-sm text-charcoal pl-5 pr-6 py-3 rounded-full flex items-center gap-2 shadow-xl hover:bg-[#25D366] hover:text-white transition duration-300 
+                  className="absolute bottom-5 right-5 bg-white/95 backdrop-blur-sm text-charcoal pl-5 pr-6 py-3 rounded-full flex items-center gap-2 shadow-xl 
+                  hover:bg-[#25D366] hover:text-white 
+                  active:bg-[#25D366] active:text-white
+                  transition duration-300 
                   opacity-100 translate-y-0 
                   md:opacity-0 md:translate-y-4 
                   md:group-hover:translate-y-0 md:group-hover:opacity-100"
                 >
                   <ShoppingBag size={18} />
                   <span className="text-xs font-bold uppercase tracking-widest">Commander</span>
-                </a>
+                </motion.a>
               </div>
               
               {/* Infos */}
