@@ -6,7 +6,7 @@ import Link from "next/link";
 
 export default function Collections() {
   // 👇 METS LE VRAI NUMÉRO ICI
-  const whatsappNumber = "33600000000"; 
+  const whatsappNumber = "243897415153"; 
   
   // On génère les mêmes 15 créations que sur l'accueil
   const creations = Array.from({ length: 15 }).map((_, i) => ({

@@ -7,7 +7,7 @@ import Link from "next/link";
 
 export default function Home() {
   // 👇 METS LE VRAI NUMÉRO ICI
-  const whatsappNumber = "33600000000"; 
+  const whatsappNumber = "243897415153"; 
   const baseWhatsappLink = `https://wa.me/${whatsappNumber}`;
 
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -82,12 +82,31 @@ export default function Home() {
             </div>
 
             <div className="flex gap-2">
-              <button onClick={() => scroll('left')} className="w-12 h-12 rounded-full border border-sand flex items-center justify-center text-charcoal hover:bg-ochre hover:text-white hover:border-ochre transition duration-300">
+              {/* BOUTON GAUCHE */}
+              <motion.button 
+                whileTap={{ scale: 0.8 }} 
+                onClick={() => scroll('left')} 
+                // J'ai ajouté les classes "active:..." ci-dessous 👇
+                className="w-12 h-12 rounded-full border border-sand flex items-center justify-center text-charcoal 
+                hover:bg-ochre hover:text-white hover:border-ochre 
+                active:bg-ochre active:text-white active:border-ochre 
+                transition duration-300"
+              >
                 <ChevronLeft size={24} />
-              </button>
-              <button onClick={() => scroll('right')} className="w-12 h-12 rounded-full border border-sand flex items-center justify-center text-charcoal hover:bg-ochre hover:text-white hover:border-ochre transition duration-300">
+              </motion.button>
+
+              {/* BOUTON DROITE */}
+              <motion.button 
+                whileTap={{ scale: 0.8 }} 
+                onClick={() => scroll('right')} 
+                // Et ici aussi 👇
+                className="w-12 h-12 rounded-full border border-sand flex items-center justify-center text-charcoal 
+                hover:bg-ochre hover:text-white hover:border-ochre 
+                active:bg-ochre active:text-white active:border-ochre 
+                transition duration-300"
+              >
                 <ChevronRight size={24} />
-              </button>
+              </motion.button>
             </div>
           </div>
           
@@ -189,7 +208,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-3 gap-12 text-center md:text-left">
           <div>
             <span className="signature-force text-4xl text-cream block mb-4">Fudkas.</span>
-            <p className="text-white/60 text-sm leading-relaxed">Atelier de couture Afro-Chic.<br/>Paris / Banlieue</p>
+            <p className="text-white/60 text-sm leading-relaxed">Atelier de couture Afro-Chic.<br/>Kinshasa / Masina / Petro-Congo</p>
           </div>
           <div className="flex flex-col items-center md:items-start gap-4">
             <h4 className="text-white font-bold uppercase tracking-widest text-xs">Contact</h4>
